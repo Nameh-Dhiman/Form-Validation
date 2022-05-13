@@ -1,0 +1,102 @@
+A regular expression is a pattern of characters.
+The pattern is used to do pattern matching "search-and-replace" functions on text.
+In JS, a RegExp Object is a pattern with properties and methods.
+
+
+Syntax: /pattern/modifier(s);
+Eg: 
+let pattern = /w3schools/i;
+w3schools -	The pattern to search for
+/w3schools/	- A regular expression
+/w3schools/i - A case-insensitive regular expression
+
+
+
+Modifiers:
+/g : performs a global match and finds all matches without stopping after getting the first result.
+/i : performs a case insensitive matching.
+/m : performs multiline matching, It only affects the behavior of start ^ and end $.
+
+ 
+
+Character Set & Ranges: 
+[abc]	    Find any character between the brackets
+[^abc]	    Find any character NOT between the brackets
+[0-9]	    Find any character between the brackets (any digit)
+[A-Z]	    Find any character between the brackets (any uppercase)
+[a-z]	    Find any character between the brackets (any lowercase)
+[a-zA-Z]	Find any character between the brackets (any lowercase or uppercase)
+[^0-9]	    Find any character NOT between the brackets (any non-digit)
+(x|y)	    Find any of the alternatives specified [x or y]
+
+Example:
+let str = "super30";
+let res = str.match(/[^a-z]/ig);
+console.log(parseInt(res.join('')));
+
+
+
+Quantifiers:
+n+	   :  Matches any string that "contains at least one n"
+n*	   :  Matches any string that "contains zero or more occurrences of n"
+n?	   :  Matches any string that "contains zero or one occurrences of n"
+
+n{X}   :  Matches any string that "contains a sequence of X n's"
+n{X,Y} :  Matches any string that "contains a sequence of X to Y n's"
+n{X,}  :  Matches any string that "contains a sequence of at least X n's"
+
+n$	   :  Matches any string with n at the end of it
+^n	   :  Matches any string with n at the beginning of it
+
+?=n	   :  Matches any string that is followed by a specific string n
+?!n	   :  Matches any string that is not followed by a specific string n
+
+Example:
+let str='0123456789';
+let res = str.match(/[0-9]{10}/ig);
+console.log(res);
+
+
+MetaCharacters and Escapes: 
+.	Find a any character, except newline or line terminator
+\w	Find a word character [a-z, A-Z, 0-9 and _'s]
+\W	Find a non-word character
+
+\d	Find a digit [0-9]
+\D	Find a non-digit character
+
+\s	Find a whitespace character
+\S	Find a non-whitespace character
+
+\b	Find a match at the beginning/end of a word, beginning like this: \bHI, end like this: HI\b
+\B	Find a match, but not at the beginning/end of a word
+
+\0	Find a NULL character
+\n	Find a new line character
+\t	Find a tab character
+
+Example:
+/\w{5}\d{3,}/ -> fw16_207
+
+let str='fw16_207 2342sdfsdf  fwsdv';
+let res = str.match(/\w{5}\d{3}/);
+console.log(res);
+
+
+Special Characters:
++   One-or-More Quantifier
+\   Escape Character
+[]  Character Set
+[^] Negate Symbol
+?   Zero-or-One Quantifier (preceding character becomes optional)
+.   Any character except the newline character
+*   Zero-or-More Quantifier
+
+Example:
+let str='that';
+let res = str.match(/t..t/);
+console.log(res); -> that
+
+let str='hello.com';
+let res = str.match(/\.com/);
+console.log(res);
